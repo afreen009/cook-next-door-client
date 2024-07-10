@@ -1,0 +1,76 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/globals" as *;
+@use "../../styles/partials/variables" as *;
+
+.header {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: $bg-color;
+  height: 100px;
+  @include tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
+    padding: 1.5rem 0;
+  }
+  @include desktop {
+    max-width: 63.75rem;
+    margin: auto;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  &__background {
+    width: 100%;
+    background-color: $bg-color;
+  }
+  &__logoLink {
+    text-decoration: none;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include tablet {
+      padding: 0.5rem 0;
+    }
+  }
+  &__logo {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 0.5rem 1.5rem 0.5rem;
+
+  @include tablet {
+    padding: 0 0 0.25rem 0;
+  }
+
+  &__item {
+    font-size: 1rem;
+    color: $navbar-text;
+    font-weight: bold;
+    text-decoration: none;
+    width: 45%;
+    padding: 0.5rem;
+    @include tablet {
+      font-size: 0.875rem;
+      width: 100%;
+      padding: 0.5rem 1rem;
+    }
+    &:hover {
+      color: $nav-hover;
+    }
+    &--active {
+      color: $navbar-text;
+      border-radius: 1.25rem;
+      background-color: green;
+    }
+  }
+}
