@@ -8,13 +8,13 @@
 .chip {
   display: flex;
   align-items: center;
-  padding: 5px 8px;
-  margin: 2px;
+  padding: 5px 4px;
+  margin: 0.0625rem;
   background-color: #e0e0e0;
   border-radius: 8px;
   color: black;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 0.625rem;
 }
 
 .chip-close {

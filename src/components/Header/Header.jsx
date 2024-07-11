@@ -1,7 +1,9 @@
-import React from "react";
 import logo from "../../assets/logo/Cook-Next_Door-Logo.png";
 import { Link, NavLink, useLocation } from "react-router-dom";
+import React, { useState } from "react";
 import "./Header.scss";
+
+import Cart from "../../assets/icons/cart.png";
 
 export default function Header() {
   const location = useLocation();
@@ -27,7 +29,7 @@ export default function Header() {
             className={({ isActive }) =>
               "nav__item" + (isActive ? " nav__item--active" : "")
             }
-            to={"/about"}
+            to={"/homePage"}
           >
             Cooks
           </NavLink>
@@ -35,11 +37,12 @@ export default function Header() {
             className={({ isActive }) =>
               "nav__item" + (isActive ? " nav__item--active" : "")
             }
-            to={"/about"}
+            to={"/homePage"}
           >
             AboutUs
           </NavLink>
         </nav>
+        <img className="header__cart" src={Cart} alt="cart icon" />
       </div>
     </header>
   );

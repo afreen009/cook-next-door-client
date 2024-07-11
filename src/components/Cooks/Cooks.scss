@@ -1,7 +1,48 @@
+@use "../../styles/partials/globals" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+
 .cooks {
-  margin: 1rem;
+  background-color: #f1f1f1;
+  height: fit-content;
   &__div {
     display: inline-flex;
     width: 100%;
+    justify-content: space-between;
+  }
+  &__filter {
+    display: inline-flex;
+    padding-right: 1rem;
+  }
+  &__title {
+    font-size: 16px;
+    padding-left: 1rem;
+    color: $primary-text-color;
+    font-weight: bolder;
+    @include tablet {
+      font-size: 2.25rem;
+    }
+  }
+  &__list {
+    background-color: $list-color;
+    height: 35vh;
+    width: 100%;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 1rem;
+  }
+  &__card {
+    height: 25vh;
+    width: 180px;
+    background-color: $card-color;
+    border-radius: 0.25rem;
+  }
+  &__AllMarker {
+    width: 25px;
+    height: 25px;
+    margin-top: 14px;
+    margin-left: 4px;
   }
 }

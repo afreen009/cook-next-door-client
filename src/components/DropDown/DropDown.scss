@@ -1,17 +1,19 @@
 .dropdown {
   position: relative;
   display: inline-flex;
-  height: fit-content;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .dropdown-toggle {
   background-color: white;
   font-weight: bold;
   color: black;
-  padding: 5px;
+  padding: 6px;
   border: none;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 10px;
 }
 
 .dropdown-toggle:focus {

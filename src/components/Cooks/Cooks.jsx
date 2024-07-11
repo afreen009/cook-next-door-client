@@ -1,6 +1,7 @@
 import React from "react";
 import Dropdown from "../DropDown/DropDown";
 import FilterPills from "../FilterPills/FilterPills";
+import Marker from "../../assets/icons/marker.png";
 import "../Cooks/Cooks.scss";
 
 export default function Cooks() {
@@ -14,18 +15,35 @@ export default function Cooks() {
   const handleSelect = (option) => {
     console.log("Selected option:", option);
   };
-  const onChipsChange = (e) => {
-    console.log(e);
-  };
+
   return (
     <article className="cooks">
       <div className="cooks__div">
         <h2 className="cooks__title">Cooks</h2>
-        {/* <div className="cooks__dropdown"> */}
-        <Dropdown options={options} onSelect={handleSelect} />
-        {/* </div> */}
-        <FilterPills initialChips={["veg", "non-veg", "halal"]} />
+        <div className="cooks__filter">
+          <Dropdown options={options} onSelect={handleSelect} />
+          <FilterPills initialChips={["Veg", "Non-Veg", "Halal"]} />
+          <img
+            className="cooks__AllMarker"
+            src={Marker}
+            alt="location marker"
+          />
+        </div>
       </div>
+      <section className="cooks__list">
+        <div className="cooks__card">
+          <div className="cooks__imageDiv">
+            {/* <img
+              src="/assets/images//Mohan-muruge.jpg"
+              class="cooks__imgCircle"
+              alt="users iamage"
+            /> */}
+          </div>
+          <div className="">
+            <span>Alex</span>
+          </div>
+        </div>
+      </section>
     </article>
   );
 }

@@ -7,7 +7,7 @@
   flex-direction: column;
   width: 100%;
   background-color: $bg-color;
-  height: 100px;
+  height: 200px;
   @include tablet {
     flex-direction: row;
     justify-content: space-between;
@@ -39,6 +39,10 @@
     width: 60px;
     height: 60px;
   }
+  &__cart {
+    width: 1.875rem;
+    height: 1.875rem;
+  }
 }
 
 .nav {
@@ -54,7 +58,7 @@
 
   &__item {
     font-size: 1rem;
-    color: $navbar-text;
+    color: $primary-text-color;
     font-weight: bold;
     text-decoration: none;
     width: 45%;
@@ -68,7 +72,7 @@
       color: $nav-hover;
     }
     &--active {
-      color: $navbar-text;
+      color: $primary-text-color;
       border-radius: 1.25rem;
       background-color: green;
     }
