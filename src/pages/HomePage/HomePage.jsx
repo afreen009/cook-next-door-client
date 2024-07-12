@@ -9,9 +9,7 @@ export default function HomePage() {
       <div className="main__heroDiv">
         <img className="main__hero" src={HeroImage} alt="Food Image" />
       </div>
-      {/* <div> */}
       <Cooks />
-      {/* </div> */}
     </main>
   );
 }
