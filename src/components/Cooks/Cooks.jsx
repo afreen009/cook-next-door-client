@@ -5,7 +5,7 @@ import FilterPills from "../FilterPills/FilterPills";
 import Marker from "../../assets/icons/marker.png";
 import "../Cooks/Cooks.scss";
 
-export default function Cooks({ cooksList }) {
+export default function Cooks({ cooksList, allLocation }) {
   const navigate = useNavigate();
   const options = [
     { value: "all", label: "Select" },
@@ -20,7 +20,7 @@ export default function Cooks({ cooksList }) {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      navigate("/allCooksMap");
+      navigate("/allCooksMap", { state: { allLocation } });
     } catch (error) {
       console.log(error);
     }

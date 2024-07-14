@@ -16,6 +16,7 @@ export default function HomePage() {
   const [failedAuth, setFailedAuth] = useState(false);
   const [cookList, setCookLists] = useState([]);
   const [menu, setmenu] = useState([]);
+  const [allLocation, setallLocation] = useState([]);
   const handleGetLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -47,8 +48,12 @@ export default function HomePage() {
         const menuItemResponse = await axios.get(
           "http://localhost:8080/menu_tem"
         );
+        const getAllCooskLocation = await axios.get(
+          "http://localhost:8080/cooks/allLocation"
+        );
         setCookLists(cooksResponse.data);
         setmenu(menuItemResponse.data);
+        setallLocation(getAllCooskLocation.data);
       } catch (error) {
         console.log(error);
         setError(`${error.response.data.error.message}. Fill all the details.`);
@@ -70,7 +75,7 @@ export default function HomePage() {
       <div className="main__heroDiv">
         <img className="main__hero" src={HeroImage} alt="Food Image" />
       </div>
-      <Cooks cooksList={cookList} />
+      <Cooks cooksList={cookList} allLocation={allLocation} />
       <HighRatedFood menuList={menu} />
     </main>
   );

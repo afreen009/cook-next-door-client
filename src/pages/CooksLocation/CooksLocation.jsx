@@ -11,9 +11,8 @@ const MAPBOX_TOKEN =
 export default function AllCooksMap() {
   const location = useLocation();
   const dataReceived = location.state;
-  const locationsData = dataReceived.allLocation;
+  const locationsData = dataReceived.location;
   const [selectedMarker, setSelectedMarker] = useState(null);
-
   return (
     <section className="maps-container">
       <Map
