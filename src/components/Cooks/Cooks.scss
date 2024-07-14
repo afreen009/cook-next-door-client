@@ -59,11 +59,14 @@
     justify-content: space-between;
   }
   &__AllMarker {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     &--filter {
       margin-top: 14px;
       margin-left: 8px;
+    }
+    @include tablet {
+      margin-top: 45px;
     }
   }
   &__avatarDiv {
@@ -90,6 +93,7 @@
   }
   &__category {
     color: $list-color;
+    font-weight: bold;
   }
   &__delivery {
     color: $secondary-text-color;
