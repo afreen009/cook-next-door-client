@@ -42,7 +42,7 @@ export default function Header() {
             AboutUs
           </NavLink>
         </nav>
-        <img className="header__cart" src={Cart} alt="cart icon" />
+        {/* <img className="header__cart" src={Cart} alt="cart icon" /> */}
       </div>
     </header>
   );

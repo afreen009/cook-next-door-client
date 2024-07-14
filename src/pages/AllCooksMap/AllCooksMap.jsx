@@ -16,6 +16,13 @@ const locations = [
 
 export default function AllCooksMap() {
   const [selectedMarker, setSelectedMarker] = useState(null);
+  const breakPoints = [
+    { width: 1, itemsToShow: 1 },
+    { width: 550, itemsToShow: 2 },
+    { width: 768, itemsToShow: 3 },
+    { width: 1200, itemsToShow: 4 },
+  ];
+
   // Function to generate a custom SVG marker
   const CustomMarker = ({ color }) => (
     <svg
@@ -33,6 +40,8 @@ export default function AllCooksMap() {
           longitude: -122.3995752,
           latitude: 37.7881856,
           zoom: 12,
+          width: "100vw",
+          height: "100vh",
         }}
         mapStyle="mapbox://styles/mapbox/light-v11"
         mapboxAccessToken={MAPBOX_TOKEN}
