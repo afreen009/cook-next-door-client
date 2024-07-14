@@ -11,16 +11,16 @@ const MAPBOX_TOKEN =
 export default function CooksLocation() {
   // const location = useLocation();
   // const dataReceived = location.state;
-  // const locationsData = dataReceived.data;
-  // console.log(locationsData);
+  // const locationsData = dataReceived.lat;
+  console.log(dataReceived);
   const [selectedMarker, setSelectedMarker] = useState(null);
   return (
     <section className="maps-container">
       <Map
         initialViewState={{
-          longitude: -122.3995752,
-          latitude: 37.7881856,
-          zoom: 5,
+          longitude: -81.2573763063707,
+          latitude: 42.932808045065364,
+          zoom: 10,
           width: "100vw",
           height: "100vh",
         }}
