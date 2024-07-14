@@ -3,11 +3,11 @@
 @use "../../styles/partials/variables" as *;
 
 .header {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   width: 100%;
   background-color: $bg-color;
-  height: 200px;
+  height: 165px;
   @include tablet {
     flex-direction: row;
     justify-content: space-between;
@@ -61,8 +61,9 @@
     color: $primary-text-color;
     font-weight: bold;
     text-decoration: none;
-    width: 45%;
+    width: 14%;
     padding: 0.5rem;
+    text-align: center;
     @include tablet {
       font-size: 0.875rem;
       width: 100%;
@@ -72,9 +73,9 @@
       color: $nav-hover;
     }
     &--active {
-      color: $primary-text-color;
+      color: white;
       border-radius: 1.25rem;
-      background-color: green;
+      background-color: grey;
     }
   }
 }

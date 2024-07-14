@@ -7,6 +7,7 @@ import Cart from "../../assets/icons/cart.png";
 
 export default function Header() {
   const location = useLocation();
+
   return (
     <header className="header__background">
       <div className="header">
@@ -25,14 +26,14 @@ export default function Header() {
           >
             Home
           </NavLink>
-          <NavLink
+          {/* <NavLink
             className={({ isActive }) =>
               "nav__item" + (isActive ? " nav__item--active" : "")
             }
             to={"/homePage"}
           >
             Cooks
-          </NavLink>
+          </NavLink> */}
           <NavLink
             className={({ isActive }) =>
               "nav__item" + (isActive ? " nav__item--active" : "")
@@ -41,8 +42,10 @@ export default function Header() {
           >
             AboutUs
           </NavLink>
+          <NavLink to={"/cart"}>
+            <img className="header__cart" src={Cart} alt="cart icon" />
+          </NavLink>
         </nav>
-        {/* <img className="header__cart" src={Cart} alt="cart icon" /> */}
       </div>
     </header>
   );
