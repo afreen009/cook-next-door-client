@@ -8,33 +8,31 @@ import "./CooksLocation.scss";
 const MAPBOX_TOKEN =
   "pk.eyJ1IjoiYWZyZWVuMDA5IiwiYSI6ImNseWhnbGRjMDA0OTUybW9mN250bjd3Z2oifQ.95T9E_nhC0IYYRVUFDmqsQ";
 
-export default function CooksLocation() {
-  // const location = useLocation();
-  // const dataReceived = location.state;
-  // const locationsData = dataReceived.lat;
-  console.log(dataReceived);
+export default function CooksLocation({ data }) {
+  console.log(data);
+  const location = useLocation();
+  const dataReceived = location.state;
   const [selectedMarker, setSelectedMarker] = useState(null);
   return (
     <section className="maps-container">
       <Map
         initialViewState={{
-          longitude: -81.2573763063707,
-          latitude: 42.932808045065364,
-          zoom: 10,
+          longitude: dataReceived.long,
+          latitude: dataReceived.lat,
+          zoom: 16,
           width: "100vw",
           height: "100vh",
         }}
         mapStyle="mapbox://styles/mapbox/light-v11"
         mapboxAccessToken={MAPBOX_TOKEN}
       >
-        {/* {locationsData.map((location, index) => (
-          <Marker
-            key={`marker-${index}`}
-            longitude={location.long}
-            latitude={location.lat}
-            anchor="bottom"
-          ></Marker>
-        ))} */}
+        <Marker
+          key={`marker-${0}`}
+          longitude={dataReceived?.long}
+          latitude={dataReceived?.lat}
+          anchor="bottom"
+        ></Marker>
+
         {selectedMarker && (
           <Popup
             latitude={selectedMarker.latitude}

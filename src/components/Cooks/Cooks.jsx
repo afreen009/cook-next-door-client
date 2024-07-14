@@ -4,6 +4,7 @@ import Dropdown from "../DropDown/DropDown";
 import FilterPills from "../FilterPills/FilterPills";
 import Marker from "../../assets/icons/marker.png";
 import "../Cooks/Cooks.scss";
+import CooksLocation from "../../pages/CooksLocation/CooksLocation";
 // import { AnimatedTooltip } from "../ui/animated-tooltip";
 
 export default function Cooks({ cooksList, allLocation }) {
@@ -92,9 +93,10 @@ export default function Cooks({ cooksList, allLocation }) {
     console.log("Selected option:", option);
   };
   const cooksLocation = (lat, long) => {
-    const data = { lat: lat, long: long };
+    const data = { lat, long };
     // navigate("/cooksLocation", { state: data });
   };
+
   const showAllCooks = async (e) => {
     e.preventDefault();
     try {
@@ -125,25 +127,19 @@ export default function Cooks({ cooksList, allLocation }) {
               <div className="cooks__avatarDiv">
                 <img
                   className="cooks__commentAvatarCircle"
-                  src={profileUrl[i]?.profile_url || svgIcon}
+                  src={profileUrl[i]?.profile_url}
                 />
               </div>
               <div>
                 <div className="cooks__nameMarker">
                   <div className="cooks__name">{cook.name}</div>
-                  {/* <Link
-                    to={{
-                      pathname: "/cooksLocation",
-                      state: { lat: cook.lat, long: cook.long },
-                    }}
-                  > */}
+
                   <img
-                    // onClick={cooksLocation(`${cook.lat}`, `${cook.long}`)}
+                    // onClick={cooksLocation(cook.lat, cook.long)}
                     src={Marker}
                     className="cooks__AllMarker"
                     alt="location marker"
                   />
-                  {/* </Link> */}
                 </div>
                 {cook.categories.split(",").map((e, index) => (
                   <div key={index} className="cooks__categories">
