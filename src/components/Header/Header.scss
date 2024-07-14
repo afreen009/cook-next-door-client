@@ -4,13 +4,14 @@
 
 .header {
   display: inline-flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
   width: 100%;
   background-color: $bg-color;
-  height: 165px;
+  height: 80px;
   @include tablet {
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
     height: auto;
     padding: 1.5rem 0;
@@ -36,8 +37,8 @@
     }
   }
   &__logo {
-    width: 60px;
-    height: 60px;
+    width: 3.75rem;
+    height: 3.75rem;
   }
   &__cart {
     width: 1.875rem;
@@ -57,7 +58,7 @@
   }
 
   &__item {
-    font-size: 1rem;
+    font-size: 0.5rem;
     color: $primary-text-color;
     font-weight: bold;
     text-decoration: none;

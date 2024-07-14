@@ -7,7 +7,7 @@ import "../Cooks/Cooks.scss";
 import CooksLocation from "../../pages/CooksLocation/CooksLocation";
 // import { AnimatedTooltip } from "../ui/animated-tooltip";
 
-export default function Cooks({ cooksList, allLocation }) {
+export default function Cooks({ cooksList, allLocation, userLocation }) {
   const navigate = useNavigate();
   const profileUrl = [
     {
@@ -111,7 +111,11 @@ export default function Cooks({ cooksList, allLocation }) {
         <h2 className="cooks__title">Cooks</h2>
         <div className="cooks__filter">
           <Dropdown options={options} onSelect={handleSelect} />
-          <FilterPills initialChips={["Veg", "Non-Veg", "Halal"]} />
+          {userLocation ? (
+            <FilterPills initialChips={["Veg", "Non-Veg", "Halal"]} />
+          ) : (
+            <></>
+          )}
           <img
             onClick={showAllCooks}
             className="cooks__AllMarker cooks__AllMarker--filter"

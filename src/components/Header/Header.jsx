@@ -26,19 +26,12 @@ export default function Header() {
           >
             Home
           </NavLink>
-          {/* <NavLink
-            className={({ isActive }) =>
-              "nav__item" + (isActive ? " nav__item--active" : "")
-            }
-            to={"/homePage"}
-          >
-            Cooks
-          </NavLink> */}
+
           <NavLink
             className={({ isActive }) =>
               "nav__item" + (isActive ? " nav__item--active" : "")
             }
-            to={"/homePage"}
+            to={"/aboutUs"}
           >
             AboutUs
           </NavLink>

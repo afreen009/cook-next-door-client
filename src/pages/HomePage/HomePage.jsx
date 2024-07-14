@@ -37,7 +37,7 @@ export default function HomePage() {
   const token = sessionStorage.getItem("JWTtoken");
 
   useEffect(() => {
-    // handleGetLocation();
+    handleGetLocation();
     if (!token) {
       setFailedAuth(true);
     }
@@ -75,7 +75,11 @@ export default function HomePage() {
       <div className="main__heroDiv">
         <img className="main__hero" src={HeroImage} alt="Food Image" />
       </div>
-      <Cooks cooksList={cookList} allLocation={allLocation} />
+      <Cooks
+        cooksList={cookList}
+        allLocation={allLocation}
+        userLocation={location}
+      />
       <HighRatedFood menuList={menu} />
     </main>
   );
