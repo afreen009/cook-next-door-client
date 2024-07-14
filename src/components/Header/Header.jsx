@@ -2,11 +2,10 @@ import logo from "../../assets/logo/Cook-Next_Door-Logo.png";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import React, { useState } from "react";
 import "./Header.scss";
+import CartIcon from "../../assets/icons/cart.png";
 
-import Cart from "../../assets/icons/cart.png";
-
-export default function Header() {
-  const location = useLocation();
+export default function Header({ cart, removeFromCart }) {
+  const dataToSend = { cart: cart, removeFromCart: removeFromCart };
 
   return (
     <header className="header__background">
@@ -35,8 +34,8 @@ export default function Header() {
           >
             AboutUs
           </NavLink>
-          <NavLink to={"/cart"}>
-            <img className="header__cart" src={Cart} alt="cart icon" />
+          <NavLink to={"/cart"} state={dataToSend}>
+            <img className="header__cart" src={CartIcon} alt="cart icon" />
           </NavLink>
         </nav>
       </div>
