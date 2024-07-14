@@ -19,7 +19,7 @@ export default function Cooks({ cooksList, allLocation }) {
   };
   const cooksLocation = (lat, long) => {
     const data = { lat: lat, long: long };
-    navigate("/cooksLocation", { state: data });
+    // navigate("/cooksLocation", { state: data });
   };
   const showAllCooks = async (e) => {
     e.preventDefault();
