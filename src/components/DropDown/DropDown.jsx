@@ -1,15 +1,21 @@
 import React, { useState } from "react";
 import "../DropDown/DropDown.scss";
 
-const Dropdown = ({ options, onSelect }) => {
+const Dropdown = ({ onSelect }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
 
   const toggleDropdown = () => setIsOpen(!isOpen);
-
+  const options = [
+    { value: "", label: "Select" },
+    { value: 400, label: "400m" },
+    { value: 600, label: "600m" },
+    { value: 1000, label: "Under 1km" },
+  ];
   const handleOptionClick = (option) => {
     setSelectedOption(option);
     setIsOpen(false);
+    onSelect;
     if (onSelect) {
       onSelect(option);
     }

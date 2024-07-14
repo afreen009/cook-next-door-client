@@ -8,6 +8,7 @@ import AllCooksMap from "./pages/AllCooksMap/AllCooksMap";
 import CooksLocation from "./pages/CooksLocation/CooksLocation";
 import Cart from "./components/Cart/Cart";
 import AboutUs from "./pages/AboutUs/AboutUs";
+import CooksDetailsPage from "./pages/CooksDetailsPage/CooksDetailsPage";
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/homePage" element={<HomePage />} />
+
+        <Route path="/cooks/:cooksId" element={<CooksDetailsPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/allCooksMap" element={<AllCooksMap />} />

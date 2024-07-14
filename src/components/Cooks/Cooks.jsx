@@ -1,14 +1,19 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Dropdown from "../DropDown/DropDown";
 import FilterPills from "../FilterPills/FilterPills";
 import Marker from "../../assets/icons/marker.png";
 import "../Cooks/Cooks.scss";
 import CooksLocation from "../../pages/CooksLocation/CooksLocation";
-// import { AnimatedTooltip } from "../ui/animated-tooltip";
 
-export default function Cooks({ cooksList, allLocation, userLocation }) {
+export default function Cooks({
+  cooksList,
+  allLocation,
+  userLocation,
+  handleSelect,
+}) {
   const navigate = useNavigate();
+
   const profileUrl = [
     {
       profile_url:
@@ -82,16 +87,7 @@ export default function Cooks({ cooksList, allLocation, userLocation }) {
       ></path>
     </svg>
   );
-  const options = [
-    { value: "all", label: "Select" },
-    { value: "option1", label: "400m" },
-    { value: "option2", label: "600m" },
-    { value: "option3", label: "Under 1km" },
-  ];
 
-  const handleSelect = (option) => {
-    console.log("Selected option:", option);
-  };
   const cooksLocation = (lat, long) => {
     const data = { lat, long };
     // navigate("/cooksLocation", { state: data });
@@ -110,7 +106,7 @@ export default function Cooks({ cooksList, allLocation, userLocation }) {
       <div className="cooks__div">
         <h2 className="cooks__title">Cooks</h2>
         <div className="cooks__filter">
-          <Dropdown options={options} onSelect={handleSelect} />
+          <Dropdown onSelect={handleSelect} />
           {userLocation ? (
             <FilterPills initialChips={["Veg", "Non-Veg", "Halal"]} />
           ) : (
@@ -127,33 +123,35 @@ export default function Cooks({ cooksList, allLocation, userLocation }) {
       <div className="cooks__container">
         <div className="cooks__carousel">
           {cooksList.map((cook, i) => (
-            <section key={i} className="cooks__card">
-              <div className="cooks__avatarDiv">
-                <img
-                  className="cooks__commentAvatarCircle"
-                  src={profileUrl[i]?.profile_url}
-                />
-              </div>
-              <div>
-                <div className="cooks__nameMarker">
-                  <div className="cooks__name">{cook.name}</div>
-
+            <Link to={`/cooks/${cook.id}`} key={i}>
+              <section className="cooks__card">
+                <div className="cooks__avatarDiv">
                   <img
-                    // onClick={cooksLocation(cook.lat, cook.long)}
-                    src={Marker}
-                    className="cooks__AllMarker"
-                    alt="location marker"
+                    className="cooks__commentAvatarCircle"
+                    src={profileUrl[i]?.profile_url}
                   />
                 </div>
-                {cook.categories.split(",").map((e, index) => (
-                  <div key={index} className="cooks__categories">
-                    <div className="cooks__greenDot"></div>
-                    <div className="cooks__category">{e}</div>
+                <div>
+                  <div className="cooks__nameMarker">
+                    <div className="cooks__name">{cook.name}</div>
+
+                    <img
+                      // onClick={cooksLocation(cook.lat, cook.long)}
+                      src={Marker}
+                      className="cooks__AllMarker"
+                      alt="location marker"
+                    />
                   </div>
-                ))}
-                <div className="cooks__delivery">{cook.delivery_options}</div>
-              </div>
-            </section>
+                  {cook.categories.split(",").map((e, index) => (
+                    <div key={index} className="cooks__categories">
+                      <div className="cooks__greenDot"></div>
+                      <div className="cooks__category">{e}</div>
+                    </div>
+                  ))}
+                  <div className="cooks__delivery">{cook.delivery_options}</div>
+                </div>
+              </section>
+            </Link>
           ))}
         </div>
       </div>
