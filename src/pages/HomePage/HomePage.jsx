@@ -11,11 +11,11 @@ import HighRatedFood from "../../components/HighRatedFood/HighRatedFood";
 export default function HomePage() {
   const [location, setLocation] = useState({ latitude: null, longitude: null });
   const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
   const [userInfo, setUserInfo] = useState({});
   const [usersList, setUsersList] = useState(null);
   const [failedAuth, setFailedAuth] = useState(false);
   const [cookList, setCookLists] = useState([]);
+  const [menu, setmenu] = useState([]);
   const handleGetLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -36,14 +36,19 @@ export default function HomePage() {
   const token = sessionStorage.getItem("JWTtoken");
 
   useEffect(() => {
+    // handleGetLocation();
     if (!token) {
       setFailedAuth(true);
     }
 
     const fetchCooks = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/cooks");
-        setCookLists(response.data);
+        const cooksResponse = await axios.get("http://localhost:8080/cooks");
+        const menuItemResponse = await axios.get(
+          "http://localhost:8080/menu_tem"
+        );
+        setCookLists(cooksResponse.data);
+        setmenu(menuItemResponse.data);
       } catch (error) {
         console.log(error);
         setError(`${error.response.data.error.message}. Fill all the details.`);
@@ -51,6 +56,7 @@ export default function HomePage() {
     };
     fetchCooks();
   }, []);
+
   if (failedAuth) {
     console.log("Ran");
     return <Navigate to="/login" />;
@@ -65,7 +71,7 @@ export default function HomePage() {
         <img className="main__hero" src={HeroImage} alt="Food Image" />
       </div>
       <Cooks cooksList={cookList} />
-      <HighRatedFood cooksList={cookList} />
+      <HighRatedFood menuList={menu} />
     </main>
   );
 }
