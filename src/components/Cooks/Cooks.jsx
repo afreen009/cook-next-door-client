@@ -17,7 +17,11 @@ export default function Cooks({ cooksList, allLocation }) {
   const handleSelect = (option) => {
     console.log("Selected option:", option);
   };
-  const handleClick = async (e) => {
+  const cooksLocation = (lat, long) => {
+    const data = { lat: lat, long: long };
+    navigate("/cooksLocation", { state: data });
+  };
+  const showAllCooks = async (e) => {
     e.preventDefault();
     try {
       navigate("/allCooksMap", { state: { allLocation } });
@@ -33,7 +37,7 @@ export default function Cooks({ cooksList, allLocation }) {
           <Dropdown options={options} onSelect={handleSelect} />
           <FilterPills initialChips={["Veg", "Non-Veg", "Halal"]} />
           <img
-            onClick={handleClick}
+            onClick={showAllCooks}
             className="cooks__AllMarker cooks__AllMarker--filter"
             src={Marker}
             alt="location marker"
@@ -51,6 +55,7 @@ export default function Cooks({ cooksList, allLocation }) {
                 <div className="cooks__nameMarker">
                   <div className="cooks__name">{cook.name}</div>
                   <img
+                    onClick={cooksLocation(`${cook.lat}`, `${cook.long}`)}
                     src={Marker}
                     className="cooks__AllMarker"
                     alt="location marker"
