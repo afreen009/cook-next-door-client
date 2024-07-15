@@ -7,7 +7,6 @@ import Register from "./pages/Register/Register";
 import AllCooksMap from "./pages/AllCooksMap/AllCooksMap";
 import CooksLocation from "./pages/CooksLocation/CooksLocation";
 import Cart from "./components/Cart/Cart";
-import AboutUs from "./pages/AboutUs/AboutUs";
 import CooksDetailsPage from "./pages/CooksDetailsPage/CooksDetailsPage";
 
 function App() {
@@ -23,7 +22,6 @@ function App() {
         <Route path="/allCooksMap" element={<AllCooksMap />} />
         <Route path="/cooksLocation" element={<CooksLocation />} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/aboutUs" element={<AboutUs />} />
       </Routes>
     </BrowserRouter>
   );

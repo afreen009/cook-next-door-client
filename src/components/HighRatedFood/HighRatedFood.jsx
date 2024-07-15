@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import FoodImage1 from "../../assets/images/1.jpg";
 import "../../components/HighRatedFood/HighRatedFood.scss";
 import StarRating from "../StarRating/StarRating";
@@ -8,33 +10,35 @@ export default function HighRatedFood({ menuList }) {
   return (
     <section className="high-rate">
       <h2 className="high-rate__title">High Rated Food Near You</h2>
-      <div className="high-rate__grid">
+      <div className="high-rate__gridContainer">
         {menuList.map((menu, index) => (
-          <div key={index} className="high-rate__gridItem">
-            <img
-              className="high-rate__img"
-              src={`${menu.food_url}` || FoodImage1}
-              alt="Food Image"
-            />
-            <div className="high-rate__content">
-              <div className="high-rate__foodName">{menu.menu_name}</div>
-              {menu.categories.split(",").map((e, index) => (
-                <div key={index} className="high-rate__categories">
-                  <p className="high-rate__greenDot"></p>
-                  <p className="high-rate__category">{e}</p>
+          <Link to={"/CooksLocation"} key={index}>
+            <div className="high-rate__gridItem">
+              <img
+                className="high-rate__img"
+                src={`${menu.food_url}` || FoodImage1}
+                alt="Food Image"
+              />
+              <div className="high-rate__content">
+                <div className="high-rate__foodName">{menu.menu_name}</div>
+                {menu.categories.split(",").map((e, index) => (
+                  <div key={index} className="high-rate__categories">
+                    <p className="high-rate__greenDot"></p>
+                    <p className="high-rate__category">{e}</p>
+                  </div>
+                ))}
+                <div className="high-rate__cook">
+                  <p className="high-rate__cooksName">{menu.name}</p>
+                  <img
+                    src={Marker}
+                    className="high-rate__marker"
+                    alt="location marker"
+                  />
                 </div>
-              ))}
-              <div className="high-rate__cook">
-                <p className="high-rate__cooksName">{menu.name}</p>
-                <img
-                  src={Marker}
-                  className="high-rate__marker"
-                  alt="location marker"
-                />
+                <StarRating rating={menu.rating} />
               </div>
-              <StarRating rating={menu.rating} />
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </section>

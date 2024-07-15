@@ -5,8 +5,7 @@
 .header {
   display: inline-flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-content: center;
+  justify-content: space-around;
   width: 100%;
   background-color: $bg-color;
   height: 80px;
@@ -17,7 +16,6 @@
     padding: 1.5rem 0;
   }
   @include desktop {
-    max-width: 63.75rem;
     margin: auto;
     padding-left: 0;
     padding-right: 0;
@@ -43,6 +41,7 @@
   &__cart {
     width: 1.875rem;
     height: 1.875rem;
+    padding-right: 1rem;
   }
 }
 
@@ -62,7 +61,7 @@
     color: $primary-text-color;
     font-weight: bold;
     text-decoration: none;
-    width: 14%;
+    width: 22%;
     padding: 0.5rem;
     text-align: center;
     @include tablet {

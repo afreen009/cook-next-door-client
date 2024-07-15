@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import "../CooksDetailsPage/CooksDetailsPage.scss";
 import FoodCard from "../../components/FoodCard/FoodCard";
+import CooksLocation from "../CooksLocation/CooksLocation";
 
 export default function CooksDetailsPage() {
   const { cooksId } = useParams();
@@ -31,6 +32,12 @@ export default function CooksDetailsPage() {
         {otherItems.map((food) => (
           <FoodCard key={food.food_id} food={food} />
         ))}
+      </div>
+      <div>
+        <CooksLocation
+          lat={cooksDetails[0]?.lat}
+          long={cooksDetails[0]?.long}
+        />
       </div>
     </div>
   ) : (

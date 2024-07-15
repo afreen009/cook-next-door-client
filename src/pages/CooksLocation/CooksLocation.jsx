@@ -8,18 +8,17 @@ import "./CooksLocation.scss";
 const MAPBOX_TOKEN =
   "pk.eyJ1IjoiYWZyZWVuMDA5IiwiYSI6ImNseWhnbGRjMDA0OTUybW9mN250bjd3Z2oifQ.95T9E_nhC0IYYRVUFDmqsQ";
 
-export default function CooksLocation({ data }) {
-  console.log(data);
-  const location = useLocation();
-  const dataReceived = location.state;
+export default function CooksLocation({ lat, long }) {
   const [selectedMarker, setSelectedMarker] = useState(null);
+  const latitude = lat || 42.932808045065364;
+  const longitude = long || -81.2573763063707;
   return (
     <section className="maps-container">
       <Map
         initialViewState={{
-          longitude: dataReceived.long,
-          latitude: dataReceived.lat,
-          zoom: 16,
+          longitude: -81.2573763063707,
+          latitude: 42.932808045065364,
+          zoom: 15,
           width: "100vw",
           height: "100vh",
         }}
@@ -28,8 +27,8 @@ export default function CooksLocation({ data }) {
       >
         <Marker
           key={`marker-${0}`}
-          longitude={dataReceived?.long}
-          latitude={dataReceived?.lat}
+          longitude={long || longitude}
+          latitude={lat || latitude}
           anchor="bottom"
         ></Marker>
 

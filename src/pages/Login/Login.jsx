@@ -31,40 +31,68 @@ const Login = () => {
       setError(`${error.response.data.error.message}. Fill all the details.`);
     }
   };
-
   return (
-    <div className="login">
-      <h1>Login</h1>
-      <form onSubmit={handleLogin} className="form">
-        <div className="form__entries">
-          <label className="form__label">username:</label>
-          <input type="text" name="username" />
-        </div>
+    <div className="login-container">
+      <div className="login">
+        <h1 className="login__title">Login</h1>
+        <form onSubmit={handleLogin} className="form">
+          <div className="form__entries">
+            <label className="form__label">Username</label>
+            <input type="text" name="username" className="form__input" />
+          </div>
 
-        <div className="form__entries">
-          <label className="form__label">Password:</label>
-          <input type="password" name="password" />
-        </div>
+          <div className="form__entries">
+            <label className="form__label">Password</label>
+            <input type="password" name="password" className="form__input" />
+          </div>
 
-        <button className="form__button" type="submit">
-          Login
-        </button>
-      </form>
+          <div className="button-container">
+            <button className="form_button form_button--login" type="submit">
+              Login
+            </button>
+            <Link to="/register" className="form_button form_button--register">
+              Register
+            </Link>
+          </div>
+        </form>
 
-      {error && (
-        <label
-          style={{
-            color: "white",
-            backgroundColor: "red",
-            fontSize: "1.3rem",
-          }}
-        >
-          {error}
-        </label>
-      )}
-      <Link to="/register">Register</Link>
+        {error && <div className="error-message">{error}</div>}
+      </div>
     </div>
   );
+  // return (
+  //   <div className="login">
+  //     <h1>Login</h1>
+  //     <form onSubmit={handleLogin} className="form">
+  //       <div className="form__entries">
+  //         <label className="form__label">username:</label>
+  //         <input type="text" name="username" />
+  //       </div>
+
+  //       <div className="form__entries">
+  //         <label className="form__label">Password:</label>
+  //         <input type="password" name="password" />
+  //       </div>
+
+  //       <button className="form__button" type="submit">
+  //         Login
+  //       </button>
+  //     </form>
+
+  //     {error && (
+  //       <label
+  //         style={{
+  //           color: "white",
+  //           backgroundColor: "red",
+  //           fontSize: "1.3rem",
+  //         }}
+  //       >
+  //         {error}
+  //       </label>
+  //     )}
+  //     <Link to="/register">Register</Link>
+  //   </div>
+  // );
 };
 
 export default Login;
