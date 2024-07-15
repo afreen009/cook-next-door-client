@@ -21,7 +21,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 10px;
-    padding: 10px;
+    padding: 0.625rem;
   }
 
   &__high-rate__gridItem {
@@ -60,7 +60,7 @@
     }
   }
   &__content {
-    height: 150px;
+    height: 9.375rem;
     padding: 1rem;
     background-color: $card-color;
     &:hover {
@@ -70,15 +70,15 @@
   &__category {
     color: $primary-text-color;
     margin: 0;
-    margin-right: 10px;
-    font-size: 10px;
+    margin-right: 0.625rem;
+    font-size: 0.625rem;
     line-height: 0;
   }
   &__categories,
   &__cook {
     display: inline-flex;
     align-items: center;
-    margin-right: 8px;
+    margin-right: 0.5rem;
     font-weight: bold;
     line-height: 0;
   }
@@ -91,21 +91,21 @@
   &__cooksName,
   &__foodName {
     color: $primary-text-color;
-    font-size: 13px;
+    font-size: 0.8125rem;
     line-height: 0;
     font-weight: bold;
     margin: 0;
   }
   &__foodName {
-    margin-top: 5px;
+    margin-top: 0.3125rem;
     @include tablet {
       font-size: 20px;
     }
   }
   &__marker {
-    width: 10px;
-    height: 10px;
-    padding-right: 30px;
+    width: 0.625rem;
+    height: 0.625rem;
+    padding-right: 1.875rem;
   }
   &__greenDot {
     width: 0.375rem;

@@ -13,7 +13,6 @@ const Dropdown = ({ handle }) => {
     { value: 1000, label: "Under 1km" },
   ];
   const handleOptionClick = (option) => {
-    console.log("here", option.value);
     handle(option.value);
     setSelectedOption(option);
     setIsOpen(false);

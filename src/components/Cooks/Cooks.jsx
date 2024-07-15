@@ -116,7 +116,6 @@ export default function Cooks({ cooksList, allLocation, userLocation }) {
   }, []);
 
   function handle(value) {
-    console.log(value);
     setsaveRange(value);
     nearByCooks();
   }
