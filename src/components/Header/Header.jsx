@@ -30,11 +30,10 @@ export default function Header({ cart, removeFromCart }) {
             className={({ isActive }) =>
               "nav__item" + (isActive ? " nav__item--active" : "")
             }
-            to={"/aboutUs"}
           >
             AboutUs
           </NavLink>
-          <NavLink to={"/cart"} state={dataToSend}>
+          <NavLink to={"/cart"}>
             <img className="header__cart" src={CartIcon} alt="cart icon" />
           </NavLink>
         </nav>

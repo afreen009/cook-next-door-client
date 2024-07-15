@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../DropDown/DropDown.scss";
 
-const Dropdown = ({ onSelect }) => {
+const Dropdown = ({ handle }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
 
@@ -13,12 +13,9 @@ const Dropdown = ({ onSelect }) => {
     { value: 1000, label: "Under 1km" },
   ];
   const handleOptionClick = (option) => {
+    handle(option.value);
     setSelectedOption(option);
     setIsOpen(false);
-    onSelect;
-    if (onSelect) {
-      onSelect(option);
-    }
   };
 
   return (

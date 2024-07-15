@@ -12,7 +12,6 @@ const Register = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  //define an Register function to handle a form submission
   const handleRegister = async (event) => {
     event.preventDefault();
     console.log(RegisterURL);
@@ -25,14 +24,14 @@ const Register = () => {
 
       navigate("/login");
     } catch (error) {
-      //console.log(error);
-      setError(`${error.message}. What did you mess up.`); //".message" part of error
+      setError(`${error.message}. What did you mess up.`);
     }
   };
 
   return (
-    <div>
+    <div className="login-containers">
       <h1>Register</h1>
+      <div className="login-container"></div>
       <form onSubmit={handleRegister} className="form">
         <div className="form__entries">
           <label className="form__label">Email:</label>
@@ -65,6 +64,7 @@ const Register = () => {
         </label>
       )}
       <Link to="/login">Login</Link>
+      <div className="login-container"></div>
     </div>
   );
 };

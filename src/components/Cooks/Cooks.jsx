@@ -1,18 +1,14 @@
-import React, { Component, useState } from "react";
+import React, { Component, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Dropdown from "../DropDown/DropDown";
 import FilterPills from "../FilterPills/FilterPills";
 import Marker from "../../assets/icons/marker.png";
 import "../Cooks/Cooks.scss";
-import CooksLocation from "../../pages/CooksLocation/CooksLocation";
 
-export default function Cooks({
-  cooksList,
-  allLocation,
-  userLocation,
-  handleSelect,
-}) {
+export default function Cooks({ cooksList, allLocation, userLocation }) {
   const navigate = useNavigate();
+  const [cookList, setCookLists] = useState(cooksList);
+  const [saveRange, setsaveRange] = useState(400);
 
   const profileUrl = [
     {
@@ -72,26 +68,6 @@ export default function Cooks({
         "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
   ];
-  const svgIcon = (
-    <svg
-      aria-hidden="true"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 100 100"
-      version="1.1"
-    >
-      <path
-        d="M 1664.500 0.579 C 1662.850 0.800, 1655.875 1.483, 1649 2.096 C 1595.351 6.882, 1536.713..."
-        stroke="none"
-        fill="currentColor"
-        fill-rule="evenodd"
-      ></path>
-    </svg>
-  );
-
-  const cooksLocation = (lat, long) => {
-    const data = { lat, long };
-    // navigate("/cooksLocation", { state: data });
-  };
 
   const showAllCooks = async (e) => {
     e.preventDefault();
@@ -101,12 +77,54 @@ export default function Cooks({
       console.log(error);
     }
   };
+
+  function nearByCooks() {
+    cookList.filter((cook) => {
+      setsaveRange(saveRange);
+      const distance = haversineDistance(
+        { lat: 42.932808045065364, long: -81.2573763063707 },
+        {
+          lat: cook.lat,
+          long: cook.long,
+        }
+      );
+      setCookLists(distance <= saveRange);
+      return;
+    });
+  }
+
+  function haversineDistance(loc1, loc2) {
+    const R = 6371;
+    const lat1 = (loc1.lat * Math.PI) / 180;
+
+    const lon1 = (loc1.long * Math.PI) / 180;
+    const lat2 = (loc2.lat * Math.PI) / 180;
+    const lon2 = (loc2.long * Math.PI) / 180;
+
+    const dLat = lat2 - lat1;
+    const dLon = lon2 - lon1;
+
+    const a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const distance = R * c * 1000;
+    return distance;
+  }
+  useEffect(() => {
+    nearByCooks();
+  }, []);
+
+  function handle(value) {
+    setsaveRange(value);
+    nearByCooks();
+  }
   return (
     <article className="cooks">
       <div className="cooks__div">
         <h2 className="cooks__title">Cooks</h2>
         <div className="cooks__filter">
-          <Dropdown onSelect={handleSelect} />
+          <Dropdown handle={handle} />
           {userLocation ? (
             <FilterPills initialChips={["Veg", "Non-Veg", "Halal"]} />
           ) : (
@@ -134,9 +152,7 @@ export default function Cooks({
                 <div>
                   <div className="cooks__nameMarker">
                     <div className="cooks__name">{cook.name}</div>
-
                     <img
-                      // onClick={cooksLocation(cook.lat, cook.long)}
                       src={Marker}
                       className="cooks__AllMarker"
                       alt="location marker"
